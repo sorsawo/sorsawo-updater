@@ -23,6 +23,7 @@ class Sorsawo_Updater {
      * Initialize all variables, filters and actions
      */
     public function __construct() {
+        add_action( 'admin_init',               array( $this, 'options_init' ) );
         add_action( 'init',               array( $this, 'load_plugin_textdomain' ), 0 );
         add_filter( 'http_request_args',  array( $this, 'dont_update_plugin' ), 5, 2 );
     }
@@ -57,6 +58,33 @@ class Sorsawo_Updater {
         $r['body']['plugins'] = json_encode( $plugins );
         
         return $r;
+    }
+    
+    public function options_init() {
+        register_setting( 'general', 'sorsawo_updater', array( $this, 'validate_options' ) );
+        
+        add_settings_field( 'sorsawo_username', '<label for="sorsawo-username">' . __( 'Sorsawo Username' , 'sorsawo-updater' ) . '</label>', array( $this, 'username_field' ), 'general', 'default' );
+        add_settings_field( 'sorsawo_apikey', '<label for="sorsawo-apikey">' . __( 'Sorsawo API Key' , 'sorsawo-updater' ) . '</label>', array( $this, 'apikey_field' ), 'general', 'default' );
+    }
+    
+    public function validate_options( $input ) {
+        $valid = get_option( 'sorsawo_updater' );
+        $valid['username'] = sanitize_text_field( $input['username'] );
+        $valid['apikey'] = sanitize_text_field( $input['apikey'] );
+        
+        return $valid;
+    }
+    
+    public function username_field() {
+        $option = get_option( 'sorsawo_updater' );
+        echo '<input type="text" id="sorsawo-username" name="sorsawo_updater[username]" value="', esc_attr( $option['username'] ), '" class="regular-text" />';
+        echo '<p class="description">' . __( 'This is your username to login to Sorsawo.Com', 'sorsawo-updater' ) . '</p>';
+    }
+    
+    public function apikey_field() {
+        $option = get_option( 'sorsawo_updater' );
+        echo '<input type="text" id="sorsawo-apikey" name="sorsawo_updater[apikey]" value="', esc_attr( $option['apikey'] ), '" class="regular-text" />';
+        echo '<p class="description">' . __( 'Please login to Sorsawo.Com to see your API Key', 'sorsawo-updater' ) . '</p>';
     }
     
 }

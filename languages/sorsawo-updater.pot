@@ -1,11 +1,11 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: Down Payment Calculator\n"
-"POT-Creation-Date: 2020-05-18 05:09+0700\n"
+"Project-Id-Version: Sorsawo Updater\n"
+"POT-Creation-Date: 2020-06-02 14:23+0700\n"
 "PO-Revision-Date: 2020-03-22 13:48+0700\n"
 "Last-Translator: \n"
-"Language-Team: Wahyu Wibowo <hello@wahyuwibowo.com>\n"
+"Language-Team: Sorsawo.Com <support@sorsawo.com>\n"
 "Language: en_US\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -17,8 +17,20 @@ msgstr ""
 "_n_noop:1,2;_c;_nc:4c,1,2;_x:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;_ex:1,2c;"
 "esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;"
 "esc_html_x:1,2c\n"
-"X-Poedit-SearchPath-0: down-payment-calculator.php\n"
+"X-Poedit-SearchPath-0: sorsawo-updater.php\n"
 
-#: down-payment-calculator.php:72
-msgid "Loading..."
+#: sorsawo-updater.php:66
+msgid "Sorsawo Username"
+msgstr ""
+
+#: sorsawo-updater.php:67
+msgid "Sorsawo API Key"
+msgstr ""
+
+#: sorsawo-updater.php:81
+msgid "This is your username to login to Sorsawo.Com"
+msgstr ""
+
+#: sorsawo-updater.php:87
+msgid "Please login to Sorsawo.Com to see your API Key"
 msgstr ""
